@@ -18,7 +18,7 @@ SF.hookAdd( "ChatText", "chattext", function( instance, ... )
     return false
 end,
 function( instance, ret )
-    if haspermission( instance, nil, "chat.hide" ) and ret then return true end
+    if ret[1] and haspermission( instance, nil, "chat.hide" ) and ret[2] == true then return true end
 end )
 
 return function() end
