@@ -41,7 +41,6 @@ end
 
 --- Called when the client calls chat.AddText
 -- Requires the 'chat.onchataddtext' permission.
--- NOTE: Attempting to print from the hook will result in a stack overflow!
 -- @name OnChatAddText
 -- @class hook
 -- @client
