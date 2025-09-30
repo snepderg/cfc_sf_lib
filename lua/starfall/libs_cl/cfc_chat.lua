@@ -5,6 +5,7 @@ registerprivilege( "chat.text", "Chat", "Allows users to see your chat prints.",
 registerprivilege( "chat.hide", "Chat", "Allows users to hide chat prints.", { client = { default = 1 } } )
 registerprivilege( "chat.onchataddtext", "Chat", "Allows users to see your chat prints (chat.addText).", { client = { default = 1 } } )
 
+--- Called when GM:ChatText is called
 -- Requires the 'chat.text' permission.
 -- Optionally requires the 'chat.hide' permission for hiding messages.
 -- NOTE: Does not apply to player chat messages, see http://wiki.facepunch.com/gmod/GM:ChatText
@@ -33,9 +34,10 @@ chat.AddText = function( ... )
     return oldChatAddText( ... )
 end
 
--- Requires the 'chat.onChatAddText' permission.
+--- Called when the client calls chat.AddText
+-- Requires the 'chat.onchataddtext' permission.
 -- NOTE: Attempting to print from the hook will result in a stack overflow!
--- @name onChatAddText
+-- @name OnChatAddText
 -- @class hook
 -- @client
 -- @param ... vararg A sequence of arguments passed to chat.AddText.
