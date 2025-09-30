@@ -27,9 +27,14 @@ end )
 chat._AddText = chat._AddText or chat.AddText
 local oldChatAddText = chat._AddText
 
+local hookRunning = false
+
 chat.AddText = function( ... )
-    print( "[Detour] chat.AddText called", ... )
-    hook.Run( "OnChatAddText", ... )
+    if not hookRunning then
+        hookRunning = true
+        hook.Run( "OnChatAddText", ... )
+        hookRunning = false
+    end
 
     return oldChatAddText( ... )
 end
