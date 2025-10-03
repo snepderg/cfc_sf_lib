@@ -24,15 +24,14 @@ function( instance, ret )
     if ret[1] and haspermission( instance, nil, "chat.hide" ) and ret[2] == true then return true end
 end )
 
-chat._AddText = chat._AddText or chat.AddText
-local oldChatAddText = chat._AddText
+CFC_SF_LIB._chatAddText = CFC_SF_LIB._chatAddText or chat.AddText
 
 local hookRunning = false
 
 chat.AddText = function( ... )
     if not hookRunning then
         hookRunning = true
-        hook.Run( "OnChatAddText", ... )
+        hook.Run( "CFC_SF_LIB_OnChatAddText", ... )
         hookRunning = false
     end
 
@@ -45,7 +44,7 @@ end
 -- @class hook
 -- @client
 -- @param ... vararg A sequence of arguments passed to chat.AddText (color objects, player entities, strings, etc.)
-SF.hookAdd( "OnChatAddText", nil, function( instance, ... )
+SF.hookAdd( "CFC_SF_LIB_OnChatAddText", nil, function( instance, ... )
     local wrapObject = instance.WrapObject
     local args = { ... }
 
